@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompareHubPrices - Smart Comparison Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="categories.js"></script>
+    <script src="search-suggestions.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="1750727567863.jpg" alt="CompareHub Logo">
+            </div>
+            <div class="header-links">
+                <div class="categories-dropdown">
+                    <a href="#categories" class="header-link">Categories <i class="fas fa-chevron-down"></i></a>
+                    <div class="categories-menu">
+                        <div class="categories-column">
+                            <h4>Product Categories</h4>
+                            <a href="#smartphones-tablets" class="category-item" data-category="smartphones-tablets">
+                                Smartphones and Tablets
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#laptops-accessories" class="category-item" data-category="laptops-accessories">
+                                Laptops and Accessories
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+            </div>
+                        <div class="categories-column subcategories-column" id="subcategories-column">
+                            <h4 id="subcategory-title">Select a category</h4>
+                            <div id="subcategory-content">
+                                <p>Hover over a category to see subcategories</p>
+        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <form id="search-form">
+                        <input type="text" name="q" class="search-input" placeholder="Search......." id="searchInput">
+                    </form>
+                    <div class="search-suggestions" id="searchSuggestions">
+                        <div class="suggestions-header">
+                            <span class="all-results">All</span>
+                            <span class="search-query" id="searchQuery">results</span>
+                        </div>
+                        <div class="suggestions-grid" id="suggestionsGrid"></div>
+                    </div>
+                </div>
+                <a href="#new-arrivals" class="header-link">New Arrivals</a>
+                <a href="#notifications" class="header-link">Notifications</a>
+                <a href="#local-business" class="header-link">Local Business</a>
+                <a href="#my-account" class="header-link">My Account</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Compare smarter and save bigger</h1>
+            <p>Make informed decisions with our powerful comparison platform. Compare products, services, and more with detailed analytics and insights.</p>
+            <div class="hero-buttons">
+                <a href="#compare" class="btn-primary">Start Comparing</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About CompareHubPrices</h3>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Help & Support</h3>
+                <ul>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="FAQs.html">FAQs</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="Terms-of-Service.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="newsletter-section">
+                    <h4>Get the Best Deals in Your Inbox</h4>
+                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                        <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CompareHub Prices. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+
+
+        // Newsletter subscription function
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            // Simple validation
+            if (email && email.includes('@')) {
+                alert('Thank you for subscribing to our newsletter!');
+                event.target.reset();
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header stays fixed - no scroll effects needed
+
+        // Animate stats on scroll with performance optimization
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-item h3');
+                    statNumbers.forEach(stat => {
+                        const finalNumber = stat.textContent;
+                        const numericValue = parseInt(finalNumber.replace(/[^\d]/g, ''));
+                        if (numericValue) {
+                            animateNumber(stat, 0, numericValue, finalNumber);
+                        }
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        function animateNumber(element, start, end, suffix) {
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            function updateNumber(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const current = start + (end - start) * easeOutQuart;
+                
+                element.textContent = Math.floor(current) + suffix.replace(/[\d]/g, '');
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+            
+            requestAnimationFrame(updateNumber);
+        }
+
+        // Touch gesture support for mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartY - touchEndY;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                // Swipe gesture handling can be added here if needed
+            }
+        }
+
+        // Prevent zoom on double tap for buttons
+        document.querySelectorAll('button, .btn-primary, .btn-secondary, .cta-button').forEach(element => {
+            element.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                this.click();
+            });
+        });
+
+        // Optimize for mobile performance
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // Service worker registration would go here for PWA functionality
+            });
+        }
+
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                // Recalculate layout after orientation change
+                window.dispatchEvent(new Event('resize'));
+            }, 100);
+        });
+    </script>
+</body>
+</html>

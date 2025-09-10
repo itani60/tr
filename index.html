@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompareHubPrices - Smart Comparison Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-mobile.css" media="(max-width: 767px)">
+    <link rel="stylesheet" href="style-tablets.css" media="(min-width: 768px) and (max-width: 1024px)">
+    
+    <!-- Device Detection Script - Load first -->
+    <script src="device-detection.js"></script>
+    
+    <link rel="preload" href="1750727567863.jpg" as="image">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="index.js" as="script">
+    <link rel="preload" href="categories.js" as="script">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <button class="mobile-toggle-btn" id="mobileToggleBtn">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="logo">
+                <img src="1750727567863.jpg" alt="CompareHub Logo" loading="lazy" width="120" height="40">
+            </div>
+            <div class="mobile-account-btn">
+                <a href="#my-account" class="mobile-account-link">My Account</a>
+            </div>
+            <div class="header-links">
+                <div class="categories-dropdown">
+                    <a href="#categories" class="header-link">Categories <i class="fas fa-chevron-down"></i></a>
+                    <div class="categories-menu">
+                        <div class="categories-column">
+                            <h4>Product Categories</h4>
+                            <a href="#smartphones-tablets" class="category-item" data-category="smartphones-tablets">
+                                Smartphones and Tablets
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="#laptops-accessories" class="category-item" data-category="laptops-accessories">
+                                Laptops and Accessories
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+            </div>
+                        <div class="categories-column subcategories-column" id="subcategories-column">
+                            <h4 id="subcategory-title">Select a category</h4>
+                            <div id="subcategory-content">
+                                <p>Hover over a category to see subcategories</p>
+        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <form id="search-form">
+                        <input type="text" name="q" class="search-input" placeholder="Search......." id="searchInput">
+                    </form>
+                    <div class="search-suggestions" id="searchSuggestions">
+                        <div class="suggestions-header">
+                            <span class="all-results">All</span>
+                            <span class="search-query" id="searchQuery">results</span>
+                        </div>
+                        <div class="suggestions-grid" id="suggestionsGrid"></div>
+                    </div>
+                </div>
+                <a href="#new-arrivals" class="header-link">New Arrivals</a>
+                <a href="#notifications" class="header-link">Notifications</a>
+                <a href="#local-business" class="header-link">Local Business</a>
+                <a href="#my-account" class="header-link">My Account</a>
+            </div>
+        </div>
+        <!-- Mobile Search Container -->
+        <div class="mobile-search-container">
+            <form id="mobile-search-form">
+                <input type="text" name="q" class="mobile-search-input" placeholder="Search......." id="mobileSearchInput">
+            </form>
+            <div class="search-suggestions" id="mobileSearchSuggestions">
+                <div class="suggestions-header">
+                    <span class="all-results">All</span>
+                    <span class="search-query" id="mobileSearchQuery">results</span>
+                </div>
+                <div class="suggestions-grid" id="mobileSuggestionsGrid"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-login" id="sidebarLogin">
+            <a href="login.html" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i>Login to CompareHub
+            </a>
+        </div>
+        <div class="sidebar-header">
+            <h3>Quick Access</h3>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-section">
+                <h4>Quick Access</h4>
+                <a href="#new-arrivals" class="sidebar-item">
+                    <span class="new-badge">New</span>
+                    <span class="item-text">New Arrivals</span>
+                </a>
+                <a href="#notifications" class="sidebar-item">
+                    Notifications
+                </a>
+                <a href="#local-business" class="sidebar-item">
+                    Local Business
+                </a>
+                <a href="#my-account" class="sidebar-item">
+                    My Account
+                </a>
+            </div>
+            <div class="sidebar-section">
+                <h4>Categories</h4>
+                <div class="category-search">
+                    <input type="text" placeholder="Search categories..." class="category-search-input" id="categorySearchInput">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <ul class="menu-items">
+                    <li class="item">
+                        <div class="submenu-item" onclick="toggleSubmenu(this)">
+                            <span>Smartphones and Tablets</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <ul class="menu-items submenu">
+                            <li class="item"><a href="#smartphones">Smartphones</a></li>
+                            <li class="item"><a href="#tablets">Tablets</a></li>
+                            <li class="item"><a href="#accessories">Mobile Accessories</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="item">
+                        <div class="submenu-item" onclick="toggleSubmenu(this)">
+                            <span><i class=""></i>Wearables Devices</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <ul class="menu-items submenu">
+                            
+                            <li class="item"><a href="#smartwatches">Smartwatches</a></li>
+                            <li class="item"><a href="#fitness-trackers">Fitness Trackers</a></li>
+                            
+                        </ul>
+                   </li>
+
+
+                    <li class="item">
+                        <div class="submenu-item" onclick="toggleSubmenu(this)">
+                            <span>Laptops and Accessories</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <ul class="menu-items submenu">
+                            <li class="item"><a href="#laptops">Windows Laptops</a></li>
+                            <li class="item"><a href="#desktops">Macbooks</a></li>
+                            <li class="item"><a href="#monitors">Chromebooks</a></li>
+                            <li class="item"><a href="#keyboards">Acces</a></li>
+                        </ul>
+                    </li>
+                  
+
+
+
+
+                    
+                    <li class="item">
+                        <div class="submenu-item" onclick="toggleSubmenu(this)">
+                            <span>Televisions & Streaming Devices</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <ul class="menu-items submenu">
+                            <li class="item"><a href="#laptops">Televisions</a></li>
+                            <li class="item"><a href="#desktops">Streaming Devices</a></li>
+                          
+                        </ul>
+                    </li>
+
+                    <li class="item">
+                        <div class="submenu-item" onclick="toggleSubmenu(this)">
+                            <span>Audio</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <ul class="menu-items submenu">
+                            <li class="item"><a href="#laptops">Earbuds</a></li>
+                            <li class="item"><a href="#desktops">Headphones</a></li>
+                            <li class="item"><a href="#monitors">Bluetooth Speakers</a></li>
+                            <li class="item"><a href="#keyboards">Party Speakers</a></li>
+                            <li class="item"><a href="#desktops">Soundbars</a></li>
+                            <li class="item"><a href="#monitors">Hi-fi Systems</a></li>
+                        
+
+                        </ul>
+                    </li>
+
+                    <li class="item">
+                        <div class="submenu-item" onclick="toggleSubmenu(this)">
+                            <span>Gaming</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <ul class="menu-items submenu">
+                            <li class="item"><a href="#laptops">Consoles</a></li>
+                            <li class="item"><a href="#desktops">Gaming Laptops</a></li>
+                            <li class="item"><a href="#monitors">Gaming Monitors</a></li>
+                            <li class="item"><a href="#keyboards">Consoles Accessories</a></li>
+                            <li class="item"><a href="#desktops">PC Gaming Accessories</a></li>
+                            
+                        </ul>
+                    </li>
+
+
+
+
+
+                    <li class="item">
+                        <div class="submenu-item" onclick="toggleSubmenu(this)">
+                            <span>Wi-Fi & Networking</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <ul class="menu-items submenu">
+                            <li class="item"><a href="#laptops">Routers</a></li>
+                            <li class="item"><a href="#desktops">WiFi Ups</a></li>
+                            <li class="item"><a href="#monitors">Extenders & Repeaters</a></li>
+                           
+                        </ul>
+                    </li>
+
+                    <li class="item">
+                        <div class="submenu-item" onclick="toggleSubmenu(this)">
+                            <span><i class=""></i>Appliances</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <ul class="menu-items submenu">
+                            
+                            <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Fridges & Freezers</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#fridges">Fridges</a></li>
+                                    <li class="item"><a href="#freezers">Freezers</a></li>
+                                </ul>
+                            </li>
+                            
+                               <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Microwaves, Ovens & Stoves</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#microwaves">Microwaves</a></li>
+                                    <li class="item"><a href="#ovens">Ovens</a></li>
+                                    <li class="item"><a href="#stoves">Stoves</a></li>
+                                </ul>
+                            </li>
+
+
+                               <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Kettles, Coffee Machines</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#kettles">Kettles</a></li>
+                                    <li class="item"><a href="#coffee-machines">Coffee Machines</a></li>
+                                   
+                                </ul>
+                            </li>
+
+
+
+
+                              <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Floorcare</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#vacuum-cleaners">Vacuum Cleaners</a></li>
+                                    <li class="item"><a href="#robot-vacuums">Robot Vacuums</a></li>
+                                
+                                </ul>
+                            </li>
+                               
+
+                               <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Food Preparation</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#mixers">Mixers</a></li>
+                                    <li class="item"><a href="#food-processors">Food Processors</a></li>
+                                    <li class="item"><a href="#blenders-juicers">Blenders & Juicers</a></li>
+                                </ul>
+                            </li>
+                                               
+
+
+                              <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Heaters & Electric Blankets</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#heaters">Heaters</a></li>
+                                    <li class="item"><a href="#electric-blankets">Electric Blankets</a></li>
+                                </ul>
+                            </li>
+                              
+                             <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Personal Care</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#electric-shavers">Electric Shavers</a></li>
+                                    <li class="item"><a href="#hair-care">Hair Care</a></li>
+                                </ul>
+                            </li>
+                              
+                              <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Cookers & Air Fryers</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#air-fryers" >Air Fryers</a></li>
+                                    <li class="item"><a href="#grillers">Grillers</a></li>
+                                   <li class="item"><a href="#cooker-steamers">Cooker&Steamers</a></li>
+                                    <li class="item"><a href="#hotplates">Hotplates</a></li>
+                                    
+                                </ul>
+                            </li>
+
+                            <li class="item">
+                                <div class="submenu-item" onclick="toggleSubmenu(this)">
+                                    <span>Toasters & Sandwich Makers</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <ul class="menu-items submenu">
+                                    <li class="item"><a href="#toasters">Toasters</a></li>
+                                    <li class="item"><a href="#sandwich-makers">Sandwich Makers</a></li>
+                                    
+                                </ul>
+                            </li>
+                            
+                            <li class="item"><a href="#dishwashers">Dishwashers</a></li>
+                            <li class="item"><a href="#irons-steamers">Irons & Steamers</a></li>
+                            <li class="item"><a href="#sewing-machine">Sewing Machine</a></li>
+                            <li class="item"><a href="#humidifiers-purifiers">Humidifiers & Purifiers</a></li>
+                           
+                        </ul>
+                   </li>
+
+                   <li class="item">
+                    <div class="submenu-item" onclick="toggleSubmenu(this)">
+                        <span><i class=""></i>Power Solutions</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <ul class="menu-items submenu">
+                  
+                        <li class="item"><a href="#ups">UPS</a></li>
+                        <li class="item"><a href="#power-stations">Power Stations</a></li>
+                        <li class="item"><a href="#inverters">Inverters</a></li>
+                        
+                    </ul>
+                </li>
+
+                <li class="item">
+                    <div class="submenu-item" onclick="toggleSubmenu(this)">
+                        <span><i class=""></i>Climate Control</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <ul class="menu-items submenu">
+                    
+                        <li class="item"><a href="#fans">Fans</a></li>
+                        <li class="item"><a href="#air-conditioners">Air Conditioners</a></li>
+                         <li class="item"><a href="#air-coolers">Air Coolers</a></li>
+                    </ul>
+               </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-modal-container">
+            <div class="login-modal-header">
+                <button class="login-modal-close" id="loginModalClose">&times;</button>
+                <div class="login-modal-logo-container">
+                    <img src="1750727567863.jpg" alt="Logo">
+                </div>
+            </div>
+            <div class="login-modal-form-container">
+                <div class="login-modal-form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Please sign in to your account to continue</p>
+                </div>
+                
+                <div id="loginAlertContainer"></div>
+                <form class="login-modal-form" id="loginModalForm">
+                    <div class="login-modal-form-group">
+                        <label for="loginModalEmail">Email Address</label>
+                        <input type="email" id="loginModalEmail" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="login-modal-form-group">
+                        <label for="loginModalPassword">Password</label>
+                        <div class="login-modal-input-wrapper">
+                            <input type="password" id="loginModalPassword" name="password" placeholder="Enter your password" required>
+                            <button type="button" class="login-modal-password-toggle" id="loginModalPasswordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="login-modal-forgot-password">
+                        <a href="#" id="loginModalForgotPassword">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="login-modal-btn" id="loginModalBtn">
+                        <span id="loginModalBtnText">Sign In</span>
+                        <div class="login-modal-spinner" id="loginModalSpinner" style="display: none;"></div>
+                    </button>
+                </form>
+                <div class="login-modal-register-link">
+                    Don't have an account? <a href="#" id="loginModalRegisterLink">Sign up here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="register-modal" id="registerModal">
+        <div class="register-modal-container">
+            <div class="register-modal-header">
+                <button class="register-modal-close" id="registerModalClose">&times;</button>
+                <div class="register-modal-logo-container">
+                    <img src="1750727567863.jpg" alt="CompareHub Logo">
+                </div>
+            </div>
+            
+            <div class="register-modal-form-container">
+                <div class="register-modal-form-header">
+                    <h2>Create Account</h2>
+                    <p>Join thousands saving money with smart comparisons</p>
+                </div>
+                
+                <div id="registerAlertContainer"></div>
+                
+                <form id="registerModalForm" autocomplete="off">
+                    <div class="register-modal-form-group">
+                        <div class="register-modal-input-group">
+                            <input type="text" class="register-modal-input" id="registerFirstname" placeholder="First Name" required>
+                            <i class="fas fa-user register-modal-input-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="register-modal-form-group">
+                        <div class="register-modal-input-group">
+                            <input type="text" class="register-modal-input" id="registerLastname" placeholder="Last Name" required>
+                            <i class="fas fa-user register-modal-input-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="register-modal-form-group">
+                        <div class="register-modal-input-group">
+                            <input type="email" class="register-modal-input" id="registerEmail" placeholder="Email Address" required>
+                            <i class="fas fa-envelope register-modal-input-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="register-modal-form-group">
+                        <div class="register-modal-input-group">
+                            <input type="password" class="register-modal-input" id="registerPassword" placeholder="Password" required>
+                            <button type="button" class="register-modal-password-toggle" onclick="toggleRegisterPassword('registerPassword')">
+                                <i class="fas fa-eye" id="registerPassword-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="register-modal-form-group">
+                        <div class="register-modal-input-group">
+                            <input type="password" class="register-modal-input" id="registerConfirmPassword" placeholder="Confirm Password" required>
+                            <button type="button" class="register-modal-password-toggle" onclick="toggleRegisterPassword('registerConfirmPassword')">
+                                <i class="fas fa-eye" id="registerConfirmPassword-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="register-modal-checkbox-group">
+                        <div class="register-modal-checkbox">
+                            <input type="checkbox" id="registerTerms" required style="position: absolute; opacity: 0; cursor: pointer; height: 100%; width: 100%; margin: 0; z-index: 1;">
+                            <div class="register-modal-checkmark"></div>
+                        </div>
+                        <label for="registerTerms" class="register-modal-checkbox-label" style="cursor: pointer;">
+                            I agree to the <a href="Terms-of-Service.html" target="_blank" style="pointer-events: auto;">Terms of Service</a> and <a href="privacy-policy.html" target="_blank" style="pointer-events: auto;">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="register-modal-btn" id="registerModalBtn">
+                        <i class="fas fa-user-plus"></i>
+                        <span id="registerModalBtnText">Create Account</span>
+                        <div class="register-modal-spinner" id="registerModalSpinner" style="display: none;"></div>
+                    </button>
+                </form>
+                
+                <div class="register-modal-divider">
+                    <span>Already have an account?</span>
+                </div>
+                
+                <div class="register-modal-login-link">
+                    <a href="#" id="registerModalLoginLink">
+                        <i class="fas fa-arrow-left"></i> Sign in instead
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="forgot-password-modal">
+        <div class="forgot-password-modal-container">
+            <div class="forgot-password-modal-header">
+                <button class="forgot-password-modal-close" onclick="closeForgotPasswordModal()">&times;</button>
+                <div class="forgot-password-modal-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+            </div>
+            <div class="forgot-password-modal-form-container">
+                <div class="forgot-password-modal-form-header">
+                    <h2>Reset Password</h2>
+                    <p>Enter your email address and we'll send you a code to reset your password.</p>
+                </div>
+
+                <div id="forgotPasswordAlert" class="forgot-password-modal-alert" style="display: none;"></div>
+
+                <form id="forgotPasswordForm">
+                    <div class="forgot-password-modal-form-group">
+                        <label for="forgotPasswordEmail">Email Address</label>
+                        <input
+                            type="email"
+                            id="forgotPasswordEmail"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="forgot-password-modal-btn" id="forgotPasswordBtn">
+                        <span id="forgotPasswordBtnText">Send Reset Code</span>
+                        <div id="forgotPasswordSpinner" class="forgot-password-modal-spinner" style="display: none;"></div>
+                    </button>
+                </form>
+
+                <div class="forgot-password-modal-back-link">
+                    <a href="#" onclick="closeForgotPasswordModal(); showLoginModal();">Back to Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Compare smarter and save bigger</h1>
+            <p>Make informed decisions with our powerful comparison platform. Compare products, services, and more with detailed analytics and insights.</p>
+            <div class="hero-buttons">
+                <a href="#compare" class="btn-primary">Start Comparing</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smartphones Deals Section -->
+    <section class="smartphones-deals" id="smartphones-deals">
+        <div class="container">
+            <div class="section-title">
+                <h2>Smartphones Deals</h2>
+                <p>Discover the best smartphone deals and compare prices from top retailers</p>
+            </div>
+            
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded dynamically from API -->
+            </div>
+            <div class="carousel-indicators" id="carousel-indicators">
+                <!-- Indicators will be generated dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About CompareHubPrices</h3>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Help & Support</h3>
+                <ul>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="FAQs.html">FAQs</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="Terms-of-Service.html">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="newsletter-section">
+                    <h4>Get the Best Deals in Your Inbox</h4>
+                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                        <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CompareHub Prices. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Load scripts at bottom with defer for better performance -->
+    <script src="inline-scripts.js" defer></script>
+    <script src="categories.js" defer></script>
+    <script src="search-suggestions.js" defer></script>
+    <script src="index.js" defer></script>
+</body>
+</html>

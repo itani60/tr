@@ -1,0 +1,271 @@
+/* Forced Tablet Styles - Applied via JavaScript */
+/* This file contains the most aggressive tablet overrides */
+
+/* Force tablet behavior regardless of other CSS */
+body.tablet .header {
+    background: white !important;
+    color: #333 !important;
+    padding: 1rem 0 !important;
+    position: fixed !important;
+    width: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    min-height: 80px !important;
+}
+
+body.tablet .nav-container {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 1.5rem !important;
+    gap: 1rem !important;
+}
+
+/* Force mobile toggle button */
+body.tablet .mobile-toggle-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: #f8f9fa !important;
+    border: 2px solid #e9ecef !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    gap: 4px !important;
+    padding: 10px !important;
+    order: -1 !important;
+}
+
+body.tablet .mobile-toggle-btn:hover {
+    background: #ef4444 !important;
+    border-color: #ef4444 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+body.tablet .mobile-toggle-btn:hover .hamburger-line {
+    background-color: white !important;
+}
+
+body.tablet .hamburger-line {
+    width: 22px !important;
+    height: 3px !important;
+    background-color: #6b7280 !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Force mobile account button */
+body.tablet .mobile-account-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+body.tablet .mobile-account-link {
+    color: #333 !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    padding: 0.6rem 1rem !important;
+    border-radius: 20px !important;
+    transition: all 0.3s ease !important;
+    white-space: nowrap !important;
+    background: #f8f9fa !important;
+    border: 2px solid #e9ecef !important;
+}
+
+body.tablet .mobile-account-link:hover {
+    background: rgba(239, 68, 68, 0.1) !important;
+    color: #ef4444 !important;
+    transform: translateY(-1px) !important;
+    border-color: #ef4444 !important;
+}
+
+/* Force mobile search container */
+body.tablet .mobile-search-container {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 0.5rem !important;
+    background-color: white !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    padding: 0.8rem 1rem !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+body.tablet .mobile-search-input {
+    width: 100% !important;
+    padding: 0.8rem 1rem !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 25px !important;
+    font-size: 0.95rem !important;
+    outline: none !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    background: #ffffff !important;
+}
+
+body.tablet .mobile-search-input:focus {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+body.tablet .mobile-search-input:hover {
+    border-color: #cbd5e0 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+body.tablet .mobile-search-input::placeholder {
+    color: #9ca3af !important;
+    font-size: 0.9rem !important;
+}
+
+/* Force hide desktop elements */
+body.tablet .search-container {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+}
+
+body.tablet .header-links {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+}
+
+body.tablet .categories-dropdown {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Force logo centering */
+body.tablet .logo {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    position: relative !important;
+    transform: none !important;
+}
+
+body.tablet .logo img {
+    height: 50px !important;
+    width: 220px !important;
+    border-radius: 10px !important;
+    object-fit: contain !important;
+    background: transparent !important;
+    filter: contrast(1.2) brightness(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+body.tablet .logo img:hover {
+    transform: scale(1.05) !important;
+    filter: contrast(1.3) brightness(1.15) !important;
+}
+
+/* Force mobile sidebar */
+body.tablet .mobile-sidebar {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 350px !important;
+    height: 100vh !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%) !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1) !important;
+    z-index: 1000 !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow-y: auto !important;
+    border-right: 1px solid #e0e0e0 !important;
+}
+
+body.tablet .mobile-sidebar.active {
+    left: 0 !important;
+}
+
+body.tablet .sidebar-overlay {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 999 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+}
+
+body.tablet .sidebar-overlay.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Landscape optimizations */
+@media (orientation: landscape) {
+    body.tablet .header {
+        padding: 0.8rem 0 !important;
+        min-height: 70px !important;
+    }
+    
+    body.tablet .nav-container {
+        padding: 0 1rem !important;
+        gap: 0.8rem !important;
+    }
+    
+    body.tablet .mobile-toggle-btn {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    body.tablet .hamburger-line {
+        width: 20px !important;
+        height: 2.5px !important;
+    }
+    
+    body.tablet .logo img {
+        height: 45px !important;
+        width: 200px !important;
+    }
+    
+    body.tablet .mobile-account-link {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.8rem !important;
+    }
+    
+    body.tablet .mobile-search-container {
+        margin-top: 0.4rem !important;
+        padding: 0.6rem 0.8rem !important;
+    }
+    
+    body.tablet .mobile-search-input {
+        padding: 0.7rem 0.9rem !important;
+        font-size: 0.9rem !important;
+    }
+}
